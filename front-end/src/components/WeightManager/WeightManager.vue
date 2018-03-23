@@ -1,23 +1,22 @@
 <template>
-    <Layout>
-        <el-container>
-            <el-aside>
-                <AddNewWeight />
-            </el-aside>
-            <el-main class="weight-manager-main">
-                <el-tabs type="border-card">
-                    <el-tab-pane>
-                        <span slot="label"><i class="el-icon-tickets"></i>记录列表</span>
-                        <WeightList />
-                    </el-tab-pane>
-                    <el-tab-pane>
-                        <span slot="label"><i class="el-icon-picture-outline"></i>趋势图</span>
-                        <WeightChart />
-                    </el-tab-pane>
-                </el-tabs>
-            </el-main>
-        </el-container>
-    </Layout>
+  <Layout>
+    <el-button
+      type="primary"
+      icon="el-icon-edit"
+      round
+      class="create-new-record-button"
+    >添加</el-button>
+    <el-tabs type="border-card">
+      <el-tab-pane>
+        <span slot="label"><i class="el-icon-tickets"></i>记录列表</span>
+        <WeightList/>
+      </el-tab-pane>
+      <el-tab-pane>
+        <span slot="label"><i class="el-icon-picture-outline"></i>趋势图</span>
+        <WeightChart/>
+      </el-tab-pane>
+    </el-tabs>
+  </Layout>
 </template>
 
 <script>
@@ -32,7 +31,11 @@ export default {
 </script>
 
 <style>
-    .weight-manager-main {
-        padding-top: 0;
-    }
+  .weight-manager-main {
+    padding-top: 0;
+  }
+
+  .create-new-record-button {
+    margin-bottom: 8px;
+  }
 </style>

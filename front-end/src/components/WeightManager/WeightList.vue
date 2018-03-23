@@ -4,6 +4,7 @@
                 :data="weightRecords"
                 stripe
                 style="width: 100%"
+                height="calc(100vh - 220px)"
         >
             <el-table-column
                     prop="date"
@@ -20,10 +21,10 @@
             <el-table-column
                     fixed="right"
                     label="操作"
-                    width="100">
+            >
                 <template slot-scope="scope">
-                    <el-button @click="handleDelete(scope.row)" type="text" size="small">删除</el-button>
-                    <el-button @click="handleOpenUpdateDialog(scope.row)" type="text" size="small">修改</el-button>
+                    <el-button @click="handleDelete(scope.row)" type="text" size="small"><i class="el-icon-delete"></i></el-button>
+                    <el-button @click="handleOpenUpdateDialog(scope.row)" type="text" size="small"><i class="el-icon-edit"></i></el-button>
                 </template>
             </el-table-column>
         </el-table>
