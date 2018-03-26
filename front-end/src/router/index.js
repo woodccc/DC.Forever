@@ -10,6 +10,11 @@ export default new Router({
   routes: [
     {
       path: '/',
+      name: 'weightManager',
+      component: WeightManager
+    },
+    {
+      path: '/home',
       name: 'Home',
       component: Home
     }, {

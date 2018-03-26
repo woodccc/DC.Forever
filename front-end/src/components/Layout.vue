@@ -6,7 +6,7 @@
               background-color="#545c64"
               text-color="#fff"
       >
-        <el-menu-item index="0"><router-link to="/">home</router-link></el-menu-item>
+        <el-menu-item index="0"><router-link to="/home">home</router-link></el-menu-item>
         <el-menu-item index="1"><router-link to="/todo">todo</router-link></el-menu-item>
         <el-menu-item index="2"><router-link to="/weightManager">Weight Manager</router-link></el-menu-item>
       </el-menu>

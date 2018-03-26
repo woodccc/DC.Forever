@@ -1,6 +1,7 @@
 <template>
   <Layout>
     <el-button
+      @click="handleToggleUpdatePopupVisible"
       type="primary"
       icon="el-icon-edit"
       round
@@ -16,17 +17,45 @@
         <WeightChart/>
       </el-tab-pane>
     </el-tabs>
+    <van-popup v-model="updatePopupVisible" position="right" :overlay="true">
+      <update-weight-popup-content
+        :onCancel="handleToggleUpdatePopupVisible"
+        :onOk="handleSave"
+      />
+    </van-popup>
   </Layout>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 import Layout from 'components/Layout'
 import AddNewWeight from './AddNewWeight'
 import WeightList from './WeightList'
 import WeightChart from './WeightChart'
+import UpdateWeightPopupContent from '@/components/WeightManager/UpdateWeightPopupContent'
 
 export default {
-  components: { Layout, AddNewWeight, WeightList, WeightChart }
+  data() {
+    return {
+      updatePopupVisible: false
+    }
+  },
+  methods: {
+    ...mapActions({
+      updateWeightRecord: 'updateWeightRecord',
+      addNewWeightRecord: 'addNewWeightRecord'
+    }),
+    handleToggleUpdatePopupVisible () {
+      this.updatePopupVisible = !this.updatePopupVisible
+    },
+    handleSave(newWeightRecord) {
+      // console.log('newWeightRecord', newWeightRecord)
+      this.addNewWeightRecord(newWeightRecord)
+      this.handleToggleUpdatePopupVisible()
+    }
+  },
+  components: { Layout, AddNewWeight, WeightList, WeightChart, UpdateWeightPopupContent }
 }
 </script>
 
