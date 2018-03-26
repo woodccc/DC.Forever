@@ -39,7 +39,7 @@ function deleteWeightRecord (context, id) {
 }
 
 function updateWeightRecord (context, weightRecord) {
-    api.updateWeightRecord(weightRecord._id, _.omit(weightRecord, '_id'))
+    api.updateWeightRecord(weightRecord.id, _.omit(weightRecord, 'id'))
         .then(() => {
             loadWeightRecords(context)
         })

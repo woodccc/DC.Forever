@@ -28,24 +28,24 @@
                 </template>
             </el-table-column>
         </el-table>
-        <update-weight-dialog
-                v-if="updateDialogVisible"
-                :weightRecord="updatingRecord"
-                :onCancel="handleToggleUpdateDialog"
-                :onOk="handleSave"
-        />
+        <van-popup v-model="updatePopupVisible" position="right">
+            <update-weight-popup-content
+              :onCancel="handleToggleUpdateDialog"
+              :onOk="handleSave"
+            />
+        </van-popup>
     </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
 
-import UpdateWeightDialog from '@/components/WeightManager/UpdateWeightDialog'
+import UpdateWeightPopupContent from '@/components/WeightManager/UpdateWeightPopupContent'
 
 export default {
     data() {
         return {
-            updateDialogVisible: false,
+            updatePopupVisible: false,
             updatingRecord: {}
         }
     },
@@ -64,18 +64,20 @@ export default {
         },
         handleOpenUpdateDialog(updatingRecord) {
             this.updatingRecord = updatingRecord
-            this.handleToggleUpdateDialog()
+            setTimeout(() => {
+              this.handleToggleUpdateDialog()
+            }, 100)
         },
         handleToggleUpdateDialog() {
-            this.updateDialogVisible = !this.updateDialogVisible
+            this.updatePopupVisible = !this.updatePopupVisible
         },
         handleSave(newWeightRecord) {
-            this.updateWeightRecord(newWeightRecord)
+            this.updateWeightRecord({ ...newWeightRecord, id: this.updatingRecord._id })
             this.handleToggleUpdateDialog()
         }
     },
     components: {
-        UpdateWeightDialog
+        UpdateWeightPopupContent
     }
 }
 </script>
