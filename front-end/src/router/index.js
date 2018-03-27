@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from '@/components/Home'
 import Todo from '@/components/Todo/Todo'
 import WeightManager from '@/components/WeightManager/WeightManager'
+import QRCode from '@/components/QRCode'
 
 Vue.use(Router)
 
@@ -25,6 +26,10 @@ export default new Router({
       path: '/weightManager',
       name: 'weightManager',
       component: WeightManager
+    }, {
+      path: '/qr-code',
+      name: 'qr-code',
+      component: QRCode
     }
   ]
 })

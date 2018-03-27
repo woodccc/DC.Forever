@@ -6,9 +6,10 @@
               background-color="#545c64"
               text-color="#fff"
       >
-        <el-menu-item index="0"><router-link to="/home">home</router-link></el-menu-item>
-        <el-menu-item index="1"><router-link to="/todo">todo</router-link></el-menu-item>
-        <el-menu-item index="2"><router-link to="/weightManager">Weight Manager</router-link></el-menu-item>
+        <el-menu-item index="0"><router-link to="/home">主页</router-link></el-menu-item>
+        <el-menu-item index="1"><router-link to="/todo">ToDo</router-link></el-menu-item>
+        <el-menu-item index="2"><router-link to="/weightManager">体重管理</router-link></el-menu-item>
+        <el-menu-item index="3"><router-link to="/qr-code">二维码</router-link></el-menu-item>
       </el-menu>
     </el-header>
     <el-main>
