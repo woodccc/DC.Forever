@@ -60,7 +60,14 @@ export default {
             updateWeightRecord: 'updateWeightRecord'
         }),
         handleDelete(record) {
-            this.$store.dispatch('deleteWeightRecord', record._id)
+            this.$dialog.confirm({
+              message: '确认删除？删除后不可恢复'
+            }).then(() => {
+              this.$store.dispatch('deleteWeightRecord', record._id)
+              this.$toast.success('删除成功')
+            }).catch(() => {
+              this.$toast.fail('取消删除')
+            })
         },
         handleOpenUpdateDialog(updatingRecord) {
             this.updatingRecord = updatingRecord
