@@ -1,6 +1,6 @@
 <template>
   <div class="update-weight-popup-content">
-    <el-form label-width="80px">
+    <el-form label-width="40px">
       <el-form-item label="日期">
         <el-date-picker
           v-model="record.date"
