@@ -14,13 +14,12 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "chart.js": "^2.7.1",
     "element-ui": "2.2.0",
     "lodash": "^4.17.4",
     "moment": "^2.20.1",
     "vant": "^1.0.3",
     "vue": "^2.5.2",
-    "vue-chartjs": "^3.2.1",
+    "vue-echarts": "^3.0.5",
     "vue-qriously": "^1.1.1",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"

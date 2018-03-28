@@ -1306,26 +1306,6 @@ chardet@^0.4.0:
   version "0.4.2"
   resolved "http://registry.npm.taobao.org/chardet/download/chardet-0.4.2.tgz#b5473b33dc97c424e5d98dc87d55d4d8a29c8bf2"
 
-chart.js:
-  version "2.7.1"
-  resolved "http://registry.npm.taobao.org/chart.js/download/chart.js-2.7.1.tgz#ae90b4aa4ff1f02decd6b1a2a8dabfd73c9f9886"
-  dependencies:
-    chartjs-color "~2.2.0"
-    moment "~2.18.0"
-
-chartjs-color-string@^0.5.0:
-  version "0.5.0"
-  resolved "http://registry.npm.taobao.org/chartjs-color-string/download/chartjs-color-string-0.5.0.tgz#8d3752d8581d86687c35bfe2cb80ac5213ceb8c1"
-  dependencies:
-    color-name "^1.0.0"
-
-chartjs-color@~2.2.0:
-  version "2.2.0"
-  resolved "http://registry.npm.taobao.org/chartjs-color/download/chartjs-color-2.2.0.tgz#84a2fb755787ed85c39dd6dd8c7b1d88429baeae"
-  dependencies:
-    chartjs-color-string "^0.5.0"
-    color-convert "^0.5.3"
-
 check-types@^7.3.0:
   version "7.3.0"
   resolved "http://registry.npm.taobao.org/check-types/download/check-types-7.3.0.tgz#468f571a4435c24248f5fd0cb0e8d87c3c341e7d"
@@ -1457,10 +1437,6 @@ collection-visit@^1.0.0:
   dependencies:
     map-visit "^1.0.0"
     object-visit "^1.0.0"
-
-color-convert@^0.5.3:
-  version "0.5.3"
-  resolved "http://registry.npm.taobao.org/color-convert/download/color-convert-0.5.3.tgz#bdb6c69ce660fadffe0b0007cc447e1b9f7282bd"
 
 color-convert@^1.3.0, color-convert@^1.9.0:
   version "1.9.1"
@@ -2062,6 +2038,12 @@ ecc-jsbn@~0.1.1:
   resolved "http://registry.npm.taobao.org/ecc-jsbn/download/ecc-jsbn-0.1.1.tgz#0fc73a9ed5f0d53c38193398523ef7e543777505"
   dependencies:
     jsbn "~0.1.0"
+
+echarts@^4.0.4:
+  version "4.0.4"
+  resolved "http://registry.npm.taobao.org/echarts/download/echarts-4.0.4.tgz#36aa8a47d33543d3dfe6a7bc1228ddc3a1e41157"
+  dependencies:
+    zrender "4.0.3"
 
 ee-first@1.1.1:
   version "1.1.1"
@@ -3988,10 +3970,6 @@ moment:
   version "2.20.1"
   resolved "http://registry.npm.taobao.org/moment/download/moment-2.20.1.tgz#d6eb1a46cbcc14a2b2f9434112c1ff8907f313fd"
 
-moment@~2.18.0:
-  version "2.18.1"
-  resolved "http://registry.npm.taobao.org/moment/download/moment-2.18.1.tgz#c36193dd3ce1c2eed2adb7c802dbbc77a81b1c0f"
-
 move-concurrently@^1.0.1:
   version "1.0.1"
   resolved "http://registry.npm.taobao.org/move-concurrently/download/move-concurrently-1.0.1.tgz#be2c005fda32e0b29af1f05d7c4b33214c701f92"
@@ -5221,6 +5199,10 @@ requires-port@~1.0.0, requires-port@1.0.x, requires-port@1.x.x:
   version "1.0.0"
   resolved "http://registry.npm.taobao.org/requires-port/download/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
 
+resize-detector@^0.1.5:
+  version "0.1.5"
+  resolved "http://registry.npm.taobao.org/resize-detector/download/resize-detector-0.1.5.tgz#7b7458ec7427d9373d2e6f6f6e661465c0481aef"
+
 resolve-cwd@^2.0.0:
   version "2.0.0"
   resolved "http://registry.npm.taobao.org/resolve-cwd/download/resolve-cwd-2.0.0.tgz#00a9f7387556e27038eae232caa372a6a59b665a"
@@ -6158,9 +6140,13 @@ vm-browserify@0.0.4:
   dependencies:
     indexof "0.0.1"
 
-vue-chartjs:
-  version "3.2.1"
-  resolved "http://registry.npm.taobao.org/vue-chartjs/download/vue-chartjs-3.2.1.tgz#8fd207e7f09a6bf13d86026071f598c4c2ff1f68"
+vue-echarts:
+  version "3.0.5"
+  resolved "http://registry.npm.taobao.org/vue-echarts/download/vue-echarts-3.0.5.tgz#40dfa70e26e5aae30a59c3546760cdc48676a774"
+  dependencies:
+    echarts "^4.0.4"
+    lodash "^4.17.4"
+    resize-detector "^0.1.5"
 
 vue-eslint-parser@^2.0.3:
   version "2.0.3"
@@ -6506,4 +6492,8 @@ yargs@6.6.0:
     which-module "^1.0.0"
     y18n "^3.2.1"
     yargs-parser "^4.2.0"
+
+zrender@4.0.3:
+  version "4.0.3"
+  resolved "http://registry.npm.taobao.org/zrender/download/zrender-4.0.3.tgz#801ef001101750a61857f84e64c4d5fb3c88cca7"
 
