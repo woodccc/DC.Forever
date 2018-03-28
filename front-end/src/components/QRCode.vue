@@ -1,6 +1,6 @@
 <template>
     <Layout>
-      <qriously :value="address" :size="200" />
+      <qriously :value="address" :size="200" class="qriously"/>
     </Layout>
 </template>
 
@@ -17,3 +17,9 @@ export default {
   components: { Layout }
 }
 </script>
+
+<style scoped>
+    .qriously {
+        text-align: center;
+    }
+</style>

@@ -3,22 +3,27 @@
         <el-table
                 :data="weightRecords"
                 stripe
+                border
                 style="width: 100%"
                 height="calc(100vh - 220px)"
         >
             <el-table-column
+                    min-width="90px"
                     prop="date"
                     label="日期">
             </el-table-column>
             <el-table-column
+                    min-width="50px"
                     prop="weight"
                     label="体重">
             </el-table-column>
             <el-table-column
+                    min-width="50px"
                     prop="tag"
                     label="标签">
             </el-table-column>
             <el-table-column
+                    min-width="70px"
                     fixed="right"
                     label="操作"
             >
