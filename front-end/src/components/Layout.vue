@@ -1,28 +1,61 @@
 <template>
-  <el-container>
-    <el-header style="padding: 0px">
-      <el-menu
-              mode="horizontal"
-              background-color="#545c64"
-              text-color="#fff"
-      >
-        <el-menu-item index="0"><router-link to="/home">主页</router-link></el-menu-item>
-        <el-menu-item index="1"><router-link to="/todo">ToDo</router-link></el-menu-item>
-        <el-menu-item index="2"><router-link to="/weightManager">体重管理</router-link></el-menu-item>
-        <el-menu-item index="3"><router-link to="/qr-code">二维码</router-link></el-menu-item>
-      </el-menu>
-    </el-header>
-    <el-main>
-      <slot />
-    </el-main>
-  </el-container>
+  <div>
+    <van-nav-bar
+      title="TCL"
+      left-text="返回"
+      left-arrow
+      @click-left="handleRouterBack"
+    />
+    <van-row style="height: calc(100vh - 96px)">
+      <slot/>
+    </van-row>
+    <van-row>
+      <van-col span="8">
+        <van-button
+          bottom-action
+          class="footer-button"
+          @click="handleLinkToQr"
+        >
+          二维码
+        </van-button>
+      </van-col>
+      <van-col span="8">
+        <van-button
+          bottom-action
+          class="footer-button"
+          @click="handleLinkToWeightManager"
+        >
+          体重
+        </van-button>
+      </van-col>
+      <van-col span="8">
+        <van-button
+          class="footer-button"
+          bottom-action
+        >
+          添加
+        </van-button>
+      </van-col>
+    </van-row>
+  </div>
 </template>
 
 <script>
 import Home from 'components/Home'
 export default {
   name: 'Layout',
-  components: { Home }
+  components: { Home },
+  methods: {
+    handleLinkToQr() {
+      this.$router.push({ path: '/qr-code' })
+    },
+    handleLinkToWeightManager() {
+      this.$router.push({ path: '/weightManager' })
+    },
+    handleRouterBack() {
+      this.$router.back()
+    }
+  }
 }
 </script>
 
@@ -41,5 +74,9 @@ li {
 }
 a {
   color: #42b983;
+}
+.footer-button {
+  color: white;
+  background-color: #afd4ee;
 }
 </style>

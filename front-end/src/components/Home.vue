@@ -14,3 +14,9 @@ export default {
   components: { Layout }
 }
 </script>
+
+<style>
+  h1 {
+    margin: 0;
+  }
+</style>
