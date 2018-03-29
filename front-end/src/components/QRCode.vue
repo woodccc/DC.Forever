@@ -20,6 +20,7 @@ export default {
 
 <style scoped>
     .qriously {
+        padding-top: calc(50vh - 200px);
         text-align: center;
     }
 </style>

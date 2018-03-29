@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="weight-chart">
         <el-radio-group
           v-model="filter"
           size="mini"
@@ -58,12 +58,15 @@ export default {
 </script>
 
 <style scoped>
+  .weight-chart {
+    padding-top: 20px;
+  }
   .chart-container {
       width: 100%;
-      height: calc(100vh - 260px);
+      height: calc(100vh - 240px);
   }
   .echarts {
-      width: calc(100vw - 40px);
-      height: calc(100vh - 260px);
+      width: 100vw;
+      height: calc(100vh - 240px);
   }
 </style>
