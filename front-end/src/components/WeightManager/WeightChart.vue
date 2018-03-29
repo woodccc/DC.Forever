@@ -63,10 +63,10 @@ export default {
   }
   .chart-container {
       width: 100%;
-      height: calc(100vh - 240px);
+      height: calc(100vh - 191px);
   }
   .echarts {
       width: 100vw;
-      height: calc(100vh - 240px);
+      height: calc(100vh - 191px);
   }
 </style>

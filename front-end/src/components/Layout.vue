@@ -32,20 +32,40 @@
         <van-button
           class="footer-button"
           bottom-action
+          @click="handleToggleUpdatePopupVisible"
         >
           添加
         </van-button>
       </van-col>
     </van-row>
+    <van-popup v-model="updatePopupVisible" position="right" :overlay="true">
+      <update-weight-popup-content
+        :onCancel="handleToggleUpdatePopupVisible"
+        :onOk="handleSave"
+      />
+    </van-popup>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 import Home from 'components/Home'
+import UpdateWeightPopupContent from '@/components/WeightManager/UpdateWeightPopupContent'
+
 export default {
   name: 'Layout',
-  components: { Home },
+  components: { Home, UpdateWeightPopupContent },
+  data() {
+    return {
+      updatePopupVisible: false
+    }
+  },
   methods: {
+    ...mapActions({
+      updateWeightRecord: 'updateWeightRecord',
+      addNewWeightRecord: 'addNewWeightRecord'
+    }),
     handleLinkToQr() {
       this.$router.push({ path: '/qr-code' })
     },
@@ -54,6 +74,13 @@ export default {
     },
     handleRouterBack() {
       this.$router.back()
+    },
+    handleToggleUpdatePopupVisible () {
+      this.updatePopupVisible = !this.updatePopupVisible
+    },
+    handleSave(newWeightRecord) {
+      this.addNewWeightRecord(newWeightRecord)
+      this.handleToggleUpdatePopupVisible()
     }
   }
 }
