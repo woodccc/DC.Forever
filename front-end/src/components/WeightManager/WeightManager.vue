@@ -7,16 +7,20 @@
       round
       class="create-new-record-button"
     >添加</el-button>
-    <el-tabs type="border-card">
-      <el-tab-pane>
-        <span slot="label"><i class="el-icon-tickets"></i>记录列表</span>
+    <van-tabs>
+      <van-tab title="记录列表">
+        <div slot="title">
+          <i class="el-icon-tickets"/>记录列表
+        </div>
         <WeightList/>
-      </el-tab-pane>
-      <el-tab-pane>
-        <span slot="label"><i class="el-icon-picture-outline"></i>趋势图</span>
+      </van-tab>
+      <van-tab title="记录列表">
+        <div slot="title">
+          <i class="el-icon-picture-outline"></i>趋势图
+        </div>
         <WeightChart/>
-      </el-tab-pane>
-    </el-tabs>
+      </van-tab>
+    </van-tabs>
     <van-popup v-model="updatePopupVisible" position="right" :overlay="true">
       <update-weight-popup-content
         :onCancel="handleToggleUpdatePopupVisible"
