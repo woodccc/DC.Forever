@@ -3,13 +3,13 @@
     <van-tabs>
       <van-tab title="记录列表">
         <div slot="title">
-          <i class="el-icon-tickets"/>记录列表
+          <i class="el-icon-tickets"/>记录
         </div>
         <WeightList/>
       </van-tab>
       <van-tab title="记录列表">
         <div slot="title">
-          <i class="el-icon-picture-outline"></i>趋势图
+          <i class="el-icon-picture-outline"></i>趋势
         </div>
         <WeightChart/>
       </van-tab>

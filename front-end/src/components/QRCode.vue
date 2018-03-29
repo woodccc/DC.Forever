@@ -1,6 +1,9 @@
 <template>
     <Layout>
-      <qriously :value="address" :size="200" class="qriously"/>
+      <div class="qr-code">
+        <vue-particles color="#dedede"/>
+        <qriously :value="address" :size="200" class="qriously"/>
+      </div>
     </Layout>
 </template>
 
@@ -19,8 +22,18 @@ export default {
 </script>
 
 <style scoped>
+    .qr-code {
+        background: #565758;
+    }
     .qriously {
-        padding-top: calc(50vh - 200px);
+        position: absolute;
+        top: calc(50vh - 120px);
+        left: calc(50vw - 100px);
         text-align: center;
+    }
+
+    #particles-js {
+      width: 100%;
+      height: calc(100vh - 52px);
     }
 </style>

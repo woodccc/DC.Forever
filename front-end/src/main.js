@@ -15,12 +15,15 @@ import 'echarts/lib/component/tooltip'
 import Vant from 'vant'
 import 'vant/lib/vant-css/index.css'
 
+import VueParticles from 'vue-particles'
+
 import VueQriously from 'vue-qriously'
 
 Vue.use(ElementUI)
 Vue.use(Vant)
 Vue.use(VueQriously)
 Vue.component('chart', ECharts)
+Vue.use(VueParticles)
 
 Vue.config.productionTip = false
 
