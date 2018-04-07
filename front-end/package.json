@@ -8,7 +8,9 @@
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "HOST=localhost npm run dev",
     "start:netWorkShare": "HOST=192.168.43.193 npm run dev",
-    "start:home": "HOST=192.168.1.4 npm run dev",
+    "start:4": "HOST=192.168.1.4 npm run dev",
+    "start:5": "HOST=192.168.1.5 npm run dev",
+    "start:6": "HOST=192.168.1.6 npm run dev",
     "lint": "eslint --ext .js,.vue src",
     "build": "node build/build.js"
   },
