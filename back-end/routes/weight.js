@@ -5,7 +5,7 @@ const Weight = require("../models/weight");
 router.prefix('/weight')
 
 router.get('/', async (ctx, next) => {
-	ctx.body = await Weight.find({})
+	ctx.body = await Weight.find({}).sort({date: 1})
 })
 
 router.post("/", async(ctx, next) => {
