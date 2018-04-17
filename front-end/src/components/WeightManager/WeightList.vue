@@ -20,7 +20,19 @@
             <el-table-column
                     min-width="50px"
                     prop="tag"
-                    label="标签">
+                    label="标签"
+                    :filter-method="filterHandler"
+                    :filters="[
+                      {text: 'CL', value: 'CL'},
+                      {text: 'DTT', value: 'DTT'},
+                      {text: 'ZK', value: 'ZK'}
+                    ]"
+            >
+              <template slot-scope="scope">
+                <el-tag
+                  :type="tagType(scope.row.tag)"
+                  close-transition>{{scope.row.tag}}</el-tag>
+              </template>
             </el-table-column>
             <el-table-column
                     min-width="70px"
@@ -86,6 +98,19 @@ export default {
         handleSave(newWeightRecord) {
             this.updateWeightRecord({ ...newWeightRecord, id: this.updatingRecord._id })
             this.handleToggleUpdateDialog()
+        },
+        filterHandler(value, row, column) {
+          const property = column['property']
+          return row[property] === value
+        },
+        tagType(tag) {
+          if (tag === 'CL') {
+            return 'primary'
+          } else if (tag === 'DTT') {
+            return 'success'
+          } else {
+            return 'warning'
+          }
         }
     },
     components: {
