@@ -3,7 +3,7 @@
     <el-form label-width="40px">
       <el-form-item label="日期">
         <el-date-picker
-          v-model="record.date"
+          v-model="date"
           style="width: 180px"
           type="date"
           placeholder="选择日期"
@@ -13,7 +13,7 @@
       </el-form-item>
       <el-form-item label="体重">
         <el-input-number
-          v-model="record.weight"
+          v-model="weight"
           controls-position="right"
           :min="1"
           :max="200"
@@ -21,7 +21,7 @@
       </el-form-item>
       <el-form-item label="标签">
         <el-radio-group
-          v-model="record.tag"
+          v-model="tag"
           size="mini"
           style="width: 180px"
         >
@@ -40,30 +40,49 @@
 
 <script>
   import moment from 'moment'
+  import { mapGetters } from 'vuex'
+  import { getLatestWeightByTag } from './UpdateWeightPopupContentService'
 
   export default {
-        name: 'update-weight-popup-content',
-        data() {
-            return {
-                record: { ...{}, ...this.defaultRecord }
-            }
-        },
-        props: {
-            defaultRecord: {
-              type: Object,
-              default: function() {
-                return {tag: 'CL', date: moment().format('YYYY-MM-DD'), weight: '100'}
-              }
-            },
-            onOk: Function,
-            onCancel: Function
-        },
-        methods: {
-            handleSave() {
-                this.onOk(this.record)
-            }
+    name: 'update-weight-popup-content',
+    data() {
+      return {
+        date: this.defaultRecord.date,
+        weight: this.defaultRecord.weight,
+        tag: this.defaultRecord.tag
+      }
+    },
+    computed: {
+      ...mapGetters({
+        records: 'weightRecords'
+      })
+    },
+    watch: {
+      tag(newTag) {
+        this.weight = getLatestWeightByTag(this.records, newTag)
+      }
+    },
+    props: {
+      defaultRecord: {
+        type: Object,
+        default: function() {
+          return {tag: 'CL', date: moment().format('YYYY-MM-DD'), weight: '100'}
         }
+      },
+      onOk: Function,
+      onCancel: Function
+    },
+    methods: {
+      handleSave() {
+        const newRecord = {
+          date: this.date,
+          weight: this.weight,
+          tag: this.tag
+        }
+        this.onOk(newRecord)
+      }
     }
+  }
 </script>
 
 <style scoped>

@@ -19,12 +19,11 @@
 
 <script>
 import Layout from 'components/Layout'
-import AddNewWeight from './AddNewWeight'
 import WeightList from './WeightList'
 import WeightChart from './WeightChart'
 
 export default {
-  components: { Layout, AddNewWeight, WeightList, WeightChart }
+  components: { Layout, WeightList, WeightChart }
 }
 </script>
 

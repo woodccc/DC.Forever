@@ -38,17 +38,26 @@
         </van-button>
       </van-col>
     </van-row>
-    <van-popup v-model="updatePopupVisible" position="right" :overlay="true">
+    <van-popup
+      v-if="isRecordsNotEmpty"
+      v-model="updatePopupVisible"
+      position="right"
+      :overlay="true"
+    >
       <update-weight-popup-content
         :onCancel="handleToggleUpdatePopupVisible"
         :onOk="handleSave"
+        :default-record="defaultRecord"
       />
     </van-popup>
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
+import _ from 'lodash'
+
+import { getDefaultRecord } from '@/components/WeightManager/UpdateWeightPopupContentService'
 
 import Home from 'components/Home'
 import UpdateWeightPopupContent from '@/components/WeightManager/UpdateWeightPopupContent'
@@ -59,6 +68,17 @@ export default {
   data() {
     return {
       updatePopupVisible: false
+    }
+  },
+  computed: {
+    ...mapGetters({
+      records: 'weightRecords'
+    }),
+    isRecordsNotEmpty() {
+      return !_.isEmpty(this.records)
+    },
+    defaultRecord() {
+      return getDefaultRecord(this.records)
     }
   },
   methods: {
