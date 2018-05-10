@@ -11,7 +11,7 @@ module.exports = {
   extends: [
     // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
     // consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.
-    'plugin:vue/essential', 
+    'plugin:vue/essential',
     // https://github.com/standard/standard/blob/master/docs/RULES-en.md
     'standard'
   ],
@@ -31,6 +31,7 @@ module.exports = {
     // allow the unary operators ++ and --
     'no-plusplus': 'off',
     'no-shadow': 'off',
+    'no-undef': 'off',
     'no-param-reassign': 'off',
     'arrow-body-style': 'off',
     'no-trailing-spaces': 'off',

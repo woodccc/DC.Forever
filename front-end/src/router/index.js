@@ -5,6 +5,7 @@ import Todo from '@/components/Todo/Todo'
 import WeightManager from '@/components/WeightManager/WeightManager'
 import QRCode from '@/components/QRCode'
 import Login from '@/components/complex/Login'
+import RubikCube from '@/components/complex/RubikCube/RubikCube'
 
 Vue.use(Router)
 
@@ -35,6 +36,10 @@ export default new Router({
       path: '/login',
       name: 'login',
       component: Login
+    }, {
+      path: '/rubikCube',
+      name: 'rubikCube',
+      component: RubikCube
     }
   ]
 })

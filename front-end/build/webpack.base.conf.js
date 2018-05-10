@@ -40,6 +40,7 @@ module.exports = {
       'constants': resolve('src/constants'),
       'router': resolve('src/router'),
       'data': resolve('src/data'),
+      'utils': resolve('src/utils'),
       'store': resolve('src/store')
     }
   },
