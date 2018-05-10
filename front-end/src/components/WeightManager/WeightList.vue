@@ -5,7 +5,7 @@
                 stripe
                 border
                 style="width: 100%"
-                height="calc(100vh - 140px)"
+                height="calc(100vh - 90px)"
         >
             <el-table-column
                     min-width="90px"

@@ -5,16 +5,12 @@ import WeightManager from '@/components/WeightManager/WeightManager'
 import QRCode from '@/components/QRCode'
 import Login from '@/components/complex/Login'
 import RubikCube from '@/components/complex/RubikCube/RubikCube'
+import Links from '@/components/global/Links'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
-    // {
-    //   path: '/',
-    //   name: 'login',
-    //   component: Login
-    // },
     {
       path: '/',
       name: 'Home',
@@ -35,6 +31,10 @@ export default new Router({
       path: '/rubikCube',
       name: 'rubikCube',
       component: RubikCube
+    }, {
+      path: '/links',
+      name: 'Links',
+      component: Links
     }
   ]
 })
