@@ -6,6 +6,11 @@
       <el-button @click="startTime" v-if="!isTimerActive && xmsCount === 0" circle>开始</el-button>
       <el-button @click="stopTime" v-if="isTimerActive" circle>停止</el-button>
     </div>
+    <div>
+      <p>{{displayRecords}}</p>
+      <p>最快:{{toReadbleTime(fastestRecord)}}</p>
+      <p>最慢:{{toReadbleTime(slowestRecord)}}</p>
+    </div>
     <van-row class="bottom-button">
       <van-col span="12">
         <van-button bottom-action @click="handleSavePlus2">+2</van-button>
@@ -18,7 +23,7 @@
 </template>
 
 <script>
-  import { mapActions } from 'vuex'
+  import { mapActions, mapGetters } from 'vuex'
   import Layout from 'components/Layout'
 
   import { toReadbleTime } from '@/utils/numberUtils'
@@ -33,9 +38,20 @@
         xms: 0
       }
     },
+    computed: {
+      ...mapGetters({
+        lastFiveSpeed3Records: 'lastFiveSpeed3Records',
+        fastestRecord: 'fastestRecord',
+        slowestRecord: 'slowestRecord'
+      }),
+      displayRecords() {
+        return _.join(_.map(this.lastFiveSpeed3Records, record => this.toReadbleTime(record)), ' | ')
+      }
+    },
     methods: {
       ...mapActions({
-        saveSpeed3Record: 'saveSpeed3Record'
+        saveSpeed3Record: 'saveSpeed3Record',
+        loadSpeed3Records: 'loadSpeed3Records'
       }),
       toReadbleTime,
       startTime() {
@@ -58,13 +74,17 @@
       },
       handleSave() {
         this.saveSpeed3Record(this.xmsCount)
-        this.handleResetTimer()
+          .then(() => {
+            this.handleResetTimer()
+          })
       },
       handleSavePlus2() {
         if (this.xmsCount === 0) return
 
         this.saveSpeed3Record(this.xmsCount + 200)
-        this.handleResetTimer()
+          .then(() => {
+            this.handleResetTimer()
+          })
       },
       handleDNF() {
         if (this.xmsCount === 0) return
@@ -72,23 +92,25 @@
         this.handleResetTimer()
       }
     },
-    components: { Layout }
+    components: { Layout },
+    mounted() {
+      this.loadSpeed3Records()
+    }
   }
 </script>
 
 <style scoped>
   .timer-text {
     font-size: 64px;
-    padding: 16px 0;
     margin: 0;
   }
 
   .el-button {
-    width: 300px;
-    height: 300px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
-    margin-top: 50px;
-    background: mediumvioletred;
+    margin-top: 0px;
+    background: #323949;
     color: white;
     font-size: 24px;
   }
@@ -96,6 +118,9 @@
   .bottom-button {
     position: absolute;
     width: 100vw;
-    bottom: 0;
+    top: calc(100vh - 50px);
+  }
+  .bottom-button .van-button {
+    background-color: #323949;
   }
 </style>

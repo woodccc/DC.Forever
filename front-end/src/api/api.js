@@ -11,3 +11,5 @@ export const deleteWeightRecord = id => $.delete(`/weight/${id}`)
 export const updateWeightRecord = (id, weightRecord) => $.put(`/weight/${id}`, weightRecord)
 
 export const saveSpeed3Record = time => $.post('/rubik-cube/speed-3/record', time)
+
+export const loadSpeed3Records = () => $.get('/rubik-cube/speed-3/records')
