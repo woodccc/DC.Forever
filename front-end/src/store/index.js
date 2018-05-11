@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 import weightRecords from './modules/weightRecords'
-import actions from './actions'
+import actions from '@/store/actions'
 
 Vue.use(Vuex)
 

@@ -8,8 +8,7 @@ const logger = require('koa-logger')
 const mongoose = require('mongoose')
 const cors = require('koa-cors')
 
-const weight = require('./routes/weight')
-const auth = require('./routes/auth')
+const routes = require('./routes')
 
 // error handler
 onerror(app)
@@ -47,8 +46,9 @@ app.use(async (ctx, next) => {
 })
 
 // routes
-app.use(weight.routes(), weight.allowedMethods())
-app.use(auth.routes(), auth.allowedMethods())
+routes.forEach((route) => {
+	app.use(route.routes(), route.allowedMethods())
+})
 
 // error-handling
 app.on('error', (err, ctx) => {
