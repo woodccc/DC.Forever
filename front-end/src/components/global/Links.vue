@@ -14,7 +14,7 @@
         />
         <van-cell
           to="rubikCube"
-          title="魔方"
+          title="秒表"
           is-link
         />
       </van-cell-group>

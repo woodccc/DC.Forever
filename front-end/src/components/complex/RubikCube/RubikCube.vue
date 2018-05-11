@@ -61,10 +61,14 @@
         this.handleResetTimer()
       },
       handleSavePlus2() {
+        if (this.xmsCount === 0) return
+
         this.saveSpeed3Record(this.xmsCount + 200)
         this.handleResetTimer()
       },
       handleDNF() {
+        if (this.xmsCount === 0) return
+
         this.handleResetTimer()
       }
     },
@@ -83,7 +87,7 @@
     width: 300px;
     height: 300px;
     border-radius: 50%;
-    margin-top: 200px;
+    margin-top: 50px;
     background: mediumvioletred;
     color: white;
     font-size: 24px;

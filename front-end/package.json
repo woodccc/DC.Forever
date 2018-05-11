@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
-    "start": "HOST=192.168.43.193 npm run dev",
+    "start": "HOST=192.168.1.4 npm run dev",
     "start:netWorkShare": "HOST=192.168.43.193 npm run dev",
     "test": "jest",
     "test:watchAll": "jest --watchAll",
