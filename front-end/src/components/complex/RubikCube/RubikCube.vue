@@ -1,11 +1,19 @@
 <template>
   <Layout>
-    <p class="timer-text">{{time}}</p>
+    <p class="timer-text">{{toReadbleTime(xmsCount)}}</p>
     <div>
-      <el-button @click="handleSave" v-if="!isTimerActive && time !== '00:00:00'" circle>保存</el-button>
-      <el-button @click="startTime" v-if="!isTimerActive && time === '00:00:00'" circle>开始</el-button>
+      <el-button @click="handleSave" v-if="!isTimerActive && xmsCount !== 0" circle>保存</el-button>
+      <el-button @click="startTime" v-if="!isTimerActive && xmsCount === 0" circle>开始</el-button>
       <el-button @click="stopTime" v-if="isTimerActive" circle>停止</el-button>
     </div>
+    <van-row class="bottom-button">
+      <van-col span="12">
+        <van-button bottom-action @click="handleSavePlus2">+2</van-button>
+      </van-col>
+      <van-col span="12">
+        <van-button bottom-action @click="handleDNF">DNF Or Pop</van-button>
+      </van-col>
+    </van-row>
   </Layout>
 </template>
 
@@ -21,7 +29,7 @@
       return {
         isTimerActive: false,
         timer: null,
-        time: '00:00:00',
+        xmsCount: 0,
         xms: 0
       }
     },
@@ -37,17 +45,27 @@
 
         this.timer = setInterval(function() {
           xmsCount += 1
-          self.time = toReadbleTime(xmsCount)
+          self.xmsCount = xmsCount
         }, 10)
       },
       stopTime() {
         this.isTimerActive = false
         clearInterval(this.timer)
       },
-      handleSave() {
-        this.saveSpeed3Record(this.time)
-        this.time = '00:00:00'
+      handleResetTimer () {
+        this.xmsCount = 0
         this.isTimerActive = false
+      },
+      handleSave() {
+        this.saveSpeed3Record(this.xmsCount)
+        this.handleResetTimer()
+      },
+      handleSavePlus2() {
+        this.saveSpeed3Record(this.xmsCount + 200)
+        this.handleResetTimer()
+      },
+      handleDNF() {
+        this.handleResetTimer()
       }
     },
     components: { Layout }
@@ -62,11 +80,18 @@
   }
 
   .el-button {
-    width: 100px;
-    height: 100px;
-    border-radius: 50px;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    margin-top: 200px;
     background: mediumvioletred;
     color: white;
     font-size: 24px;
+  }
+
+  .bottom-button {
+    position: absolute;
+    width: 100vw;
+    bottom: 0;
   }
 </style>
