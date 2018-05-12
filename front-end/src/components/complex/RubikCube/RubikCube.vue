@@ -10,6 +10,7 @@
       <p>{{displayRecords}}</p>
       <p>最快:{{toReadbleTime(fastestRecord)}}</p>
       <p>最慢:{{toReadbleTime(slowestRecord)}}</p>
+      <p>平均:{{avgRecord}}</p>
     </div>
     <van-row class="bottom-button">
       <van-col span="12">
@@ -46,6 +47,9 @@
       }),
       displayRecords() {
         return _.join(_.map(this.lastFiveSpeed3Records, record => this.toReadbleTime(record)), ' | ')
+      },
+      avgRecord() {
+        return toReadbleTime(_.sum(this.lastFiveSpeed3Records) / 5)
       }
     },
     methods: {
@@ -80,6 +84,11 @@
       },
       handleSavePlus2() {
         if (this.xmsCount === 0) return
+        if (this.isTimerActive) {
+          this.stopTime()
+          this.handleResetTimer()
+          return
+        }
 
         this.saveSpeed3Record(this.xmsCount + 200)
           .then(() => {
@@ -89,6 +98,7 @@
       handleDNF() {
         if (this.xmsCount === 0) return
 
+        this.stopTime()
         this.handleResetTimer()
       }
     },
