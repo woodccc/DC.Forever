@@ -86,7 +86,7 @@
   .add-weight-button {
     position: absolute;
     border-radius: 400px;
-    background-color: #00b7ff82;
+    background-color: rgba(0, 0, 0, 0.5);
     color: white;
     padding: 6px;
     font-size: 44px;

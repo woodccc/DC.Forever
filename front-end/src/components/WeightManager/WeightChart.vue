@@ -37,6 +37,10 @@ export default {
       const max = Number(_.max(weightData)) + 5
 
       return {
+        tooltip: {
+          show: true,
+          trigger: 'axis'
+        },
         xAxis: {
           type: 'category',
           data: dateData
