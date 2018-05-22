@@ -31,8 +31,16 @@ function login (context, form) {
         })
 }
 
+function addNewWeightRecord (context, weightRecord) {
+  api.addNewWeightRecord(weightRecord)
+    .then(() => {
+      loadWeightRecords(context)
+    })
+}
+
 export default {
   login,
+  addNewWeightRecord,
   updateWeightRecord,
   loadWeightRecords,
   deleteWeightRecord
