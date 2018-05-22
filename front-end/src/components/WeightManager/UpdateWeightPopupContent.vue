@@ -75,8 +75,8 @@
     methods: {
       handleSave() {
         const newRecord = {
-          date: this.date,
-          weight: moment(this.weight).format('YYYY-MM-DD'),
+          date: moment(this.date).format('YYYY-MM-DD'),
+          weight: this.weight,
           tag: this.tag
         }
         this.onOk(newRecord)
