@@ -1,32 +1,35 @@
 <template>
-  <Layout>
-    <van-tabs>
-      <van-tab title="秒表">
-        <div slot="title">
-          <i class="el-icon-tickets"/>秒表
-        </div>
-        <rubik-cube-clock/>
-      </van-tab>
-      <van-tab title="记录">
-        <div slot="title">
-          <i class="el-icon-tickets"/>记录
-        </div>
-        <rubik-cube-records />
-      </van-tab>
-    </van-tabs>
-  </Layout>
+  <div>
+    <p class="timer-text">{{toReadbleTime(xmsCount)}}</p>
+    <div>
+      <el-button @click="handleSave" v-if="!isTimerActive && xmsCount !== 0" circle>保存</el-button>
+      <el-button @click="startTime" v-if="!isTimerActive && xmsCount === 0" circle>开始</el-button>
+      <el-button @click="stopTime" v-if="isTimerActive" circle>停止</el-button>
+    </div>
+    <div>
+      <p>{{displayRecords}}</p>
+      <p>最快:{{toReadbleTime(fastestRecord)}}</p>
+      <p>最慢:{{toReadbleTime(slowestRecord)}}</p>
+      <p>平均:{{avgRecord}}</p>
+    </div>
+    <van-row class="bottom-button">
+      <van-col span="12">
+        <van-button bottom-action @click="handleSavePlus2">+2</van-button>
+      </van-col>
+      <van-col span="12">
+        <van-button bottom-action @click="handleDNF">DNF Or Pop</van-button>
+      </van-col>
+    </van-row>
+  </div>
 </template>
 
 <script>
   import { mapActions, mapGetters } from 'vuex'
-  import Layout from 'components/Layout'
-  import RubikCubeClock from './RubikCubeClock'
-  import RubikCubeRecords from './RubikCubeRecords'
 
   import { toReadbleTime } from '@/utils/numberUtils'
 
   export default {
-    name: 'rubik-cube',
+    name: 'rubik-cube-clock',
     data() {
       return {
         isTimerActive: false,
@@ -98,7 +101,6 @@
         this.handleResetTimer()
       }
     },
-    components: { Layout, RubikCubeClock, RubikCubeRecords },
     mounted() {
       this.loadSpeed3Records()
     }
@@ -124,7 +126,7 @@
   .bottom-button {
     position: absolute;
     width: 100vw;
-    top: calc(100vh - 50px);
+    top: calc(100vh - 90px);
   }
   .bottom-button .van-button {
     background-color: #323949;

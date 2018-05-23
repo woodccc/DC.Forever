@@ -1,4 +1,5 @@
 import _ from 'lodash'
+import moment from 'moment'
 import mutationTypes from 'store/mutationTypes'
 
 const state = {
@@ -8,6 +9,12 @@ const state = {
 // getters
 const getters = {
   speed3Records: state => state.speed3Records,
+  formatDateTimeSpeed3Records: state => _.map(state.speed3Records, item => {
+    return {
+      dateTime: moment(item.dateTime).format('YYYY-MM-DD'),
+      time: item.time
+    }
+  }),
   lastFiveSpeed3Records: state => _.map(_.takeRight(state.speed3Records, 5), 'time'),
   fastestRecord: (state, getters) => _.min(getters.lastFiveSpeed3Records),
   slowestRecord: (state, getters) => _.max(getters.lastFiveSpeed3Records)
