@@ -16,11 +16,9 @@
 
 <script>
   import { mapGetters } from 'vuex'
-  import Home from 'components/Home'
 
   export default {
     name: 'Layout',
-    components: { Home },
     computed: {
       ...mapGetters({
         title: 'title'

@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/components/Home'
 import WeightManager from '@/components/WeightManager/WeightManager'
 import QRCode from '@/components/QRCode'
 import Login from '@/components/complex/Login'
@@ -13,8 +12,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Home',
-      component: Home
+      name: 'Links',
+      component: Links
     }, {
       path: '/weightManager',
       name: 'weightManager',
