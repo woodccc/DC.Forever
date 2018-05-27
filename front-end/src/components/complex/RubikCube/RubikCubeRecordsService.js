@@ -1,12 +1,25 @@
 import _ from 'lodash'
 
+function getGroupByDataTimeRecords(records) {
+  return _.groupBy(records, 'dateTime')
+}
+
 export function calculateEverydayBest(records) {
-  const groupByDataTimeRecords = _.groupBy(records, 'dateTime')
-  const best = _.map(groupByDataTimeRecords, (record, key) => {
+  const groupByDataTimeRecords = getGroupByDataTimeRecords(records)
+  return _.map(groupByDataTimeRecords, (record, key) => {
     return {
       dateTime: key,
       time: _.min(_.map(record, 'time'))
     }
   })
-  return best
+}
+
+export function calculateEverydayAvg(records) {
+  const groupByDataTimeRecords = getGroupByDataTimeRecords(records)
+  return _.map(groupByDataTimeRecords, (record, key) => {
+    return {
+      dateTime: key,
+      time: _.mean(_.map(record, 'time'))
+    }
+  })
 }

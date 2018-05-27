@@ -12,34 +12,34 @@
         </template>
       </el-table-column>
     </el-table>
-    <el-dropdown
-      type="primary"
-      class="more-action"
-      placement="top-start"
-      :hide-on-click="false"
-    >
-      <i class="el-icon-menu" />
-      <el-dropdown-menu slot="dropdown">
-        <el-dropdown-item>
-          <el-button
-            @click="handleGetEverydayAvg"
-            type="text"
-          >每日平均</el-button>
-        </el-dropdown-item>
-        <el-dropdown-item>
-          <el-button
-            @click="handleGetEverydayBest"
-            type="text"
-          >每日最佳</el-button>
-        </el-dropdown-item>
-        <el-dropdown-item>
-          <el-button
-            @click="handleGetAllRecords"
-            type="text"
-          >所有</el-button>
-        </el-dropdown-item>
-      </el-dropdown-menu>
-    </el-dropdown>
+    <i class="el-icon-menu more-action" @click="handleToggleMoreAction"/>
+    <van-popup v-model="show" position="bottom" :overlay="true">
+      <div class="bottom-action-button-container">
+        <van-row>
+          <van-col span="24">
+            <van-button
+              @click="handleGetEverydayAvg"
+              type="text"
+              bottom-action
+            >每日平均</van-button>
+          </van-col>
+          <van-col span="24">
+            <van-button
+              @click="handleGetEverydayBest"
+              bottom-action
+              type="text"
+            >每日最佳</van-button>
+          </van-col>
+          <van-col span="24">
+            <van-button
+              @click="handleGetAllRecords"
+              bottom-action
+              type="text"
+            >所有</van-button>
+          </van-col>
+        </van-row>
+      </div>
+    </van-popup>
   </div>
 </template>
 
@@ -47,13 +47,14 @@
   import { mapActions, mapGetters } from 'vuex'
 
   import { toReadbleTime } from '@/utils/numberUtils'
-  import { calculateEverydayBest } from './RubikCubeRecordsService'
+  import { calculateEverydayBest, calculateEverydayAvg } from './RubikCubeRecordsService'
 
   export default {
     name: 'rubik-cube-records',
     data() {
       return {
-        records: []
+        records: [],
+        show: false
       }
     },
     computed: {
@@ -65,13 +66,19 @@
       ...mapActions({}),
       toReadbleTime,
       handleGetEverydayAvg() {
-        this.records = []
+        this.records = calculateEverydayAvg(this.formatDateTimeSpeed3Records)
+        this.handleToggleMoreAction()
       },
       handleGetEverydayBest() {
         this.records = calculateEverydayBest(this.formatDateTimeSpeed3Records)
+        this.handleToggleMoreAction()
       },
       handleGetAllRecords() {
         this.records = this.formatDateTimeSpeed3Records
+        this.handleToggleMoreAction()
+      },
+      handleToggleMoreAction() {
+        this.show = !this.show
       }
     },
     created() {
@@ -92,5 +99,14 @@
   }
   .el-icon-menu {
     font-size: 40px;
+  }
+
+  .bottom-action-button-container {
+    padding: 16px 0;
+  }
+
+  .van-button {
+    color: black;
+    background-color: white;
   }
 </style>
