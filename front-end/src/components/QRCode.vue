@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import Layout from 'components/Layout'
+import Layout from 'components/simple/Layout'
 
 export default {
   name: 'qr-code',

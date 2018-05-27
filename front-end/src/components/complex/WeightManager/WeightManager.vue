@@ -41,7 +41,7 @@
   import { mapActions, mapGetters } from 'vuex'
   import _ from 'lodash'
 
-  import Layout from 'components/Layout'
+  import Layout from 'components/simple/Layout'
   import WeightList from './WeightList'
   import WeightChart from './WeightChart'
   import UpdateWeightPopupContent from '@/components/WeightManager/UpdateWeightPopupContent'

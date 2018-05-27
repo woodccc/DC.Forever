@@ -19,7 +19,7 @@
 
 <script>
   import { mapActions, mapGetters } from 'vuex'
-  import Layout from 'components/Layout'
+  import Layout from 'components/simple/Layout'
   import RubikCubeClock from './RubikCubeClock'
   import RubikCubeRecords from './RubikCubeRecords'
 
