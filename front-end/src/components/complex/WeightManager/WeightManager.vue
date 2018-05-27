@@ -44,9 +44,9 @@
   import Layout from 'components/simple/Layout'
   import WeightList from './WeightList'
   import WeightChart from './WeightChart'
-  import UpdateWeightPopupContent from '@/components/WeightManager/UpdateWeightPopupContent'
+  import UpdateWeightPopupContent from '@/components/complex/WeightManager/UpdateWeightPopupContent'
 
-  import { getDefaultRecord } from '@/components/WeightManager/UpdateWeightPopupContentService'
+  import { getDefaultRecord } from '@/components/complex/WeightManager/UpdateWeightPopupContentService'
 
   export default {
     data() {

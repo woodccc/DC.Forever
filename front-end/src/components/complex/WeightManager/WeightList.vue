@@ -57,7 +57,7 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 
-import UpdateWeightPopupContent from '@/components/WeightManager/UpdateWeightPopupContent'
+import UpdateWeightPopupContent from '@/components/complex/WeightManager/UpdateWeightPopupContent'
 
 export default {
     data() {

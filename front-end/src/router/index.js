@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import WeightManager from '@/components/WeightManager/WeightManager'
+import WeightManager from '@/components/complex/WeightManager/WeightManager'
 import QRCode from '@/components/QRCode'
 import Login from '@/components/complex/Login'
 import RubikCube from '@/components/complex/RubikCube/RubikCube'
