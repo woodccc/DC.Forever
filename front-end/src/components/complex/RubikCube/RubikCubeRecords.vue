@@ -35,7 +35,7 @@
               @click="handleGetAllRecords"
               bottom-action
               type="text"
-            >所有</van-button>
+            >所有记录</van-button>
           </van-col>
         </van-row>
       </div>
@@ -63,19 +63,22 @@
       })
     },
     methods: {
-      ...mapActions({}),
+      ...mapActions(['updateTitle']),
       toReadbleTime,
       handleGetEverydayAvg() {
         this.records = calculateEverydayAvg(this.formatDateTimeSpeed3Records)
         this.handleToggleMoreAction()
+        this.updateTitle('每日平均')
       },
       handleGetEverydayBest() {
         this.records = calculateEverydayBest(this.formatDateTimeSpeed3Records)
         this.handleToggleMoreAction()
+        this.updateTitle('每日最佳')
       },
       handleGetAllRecords() {
         this.records = this.formatDateTimeSpeed3Records
         this.handleToggleMoreAction()
+        this.updateTitle('所有记录')
       },
       handleToggleMoreAction() {
         this.show = !this.show

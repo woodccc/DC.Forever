@@ -1,6 +1,6 @@
 <template>
   <Layout>
-    <van-tabs>
+    <van-tabs @click="handleClickTab">
       <van-tab title="秒表">
         <div slot="title">
           <i class="el-icon-tickets"/>秒表
@@ -11,7 +11,7 @@
         <div slot="title">
           <i class="el-icon-tickets"/>记录
         </div>
-        <rubik-cube-records />
+        <rubik-cube-records v-if="showRubikCubeRecords"/>
       </van-tab>
     </van-tabs>
   </Layout>
@@ -37,6 +37,7 @@
     },
     computed: {
       ...mapGetters({
+        formatDateTimeSpeed3Records: 'formatDateTimeSpeed3Records',
         lastFiveSpeed3Records: 'lastFiveSpeed3Records',
         fastestRecord: 'fastestRecord',
         slowestRecord: 'slowestRecord'
@@ -46,10 +47,14 @@
       },
       avgRecord() {
         return toReadbleTime(_.sum(this.lastFiveSpeed3Records) / 5)
+      },
+      showRubikCubeRecords() {
+        return this.formatDateTimeSpeed3Records.length
       }
     },
     methods: {
       ...mapActions({
+        updateTitle: 'updateTitle',
         saveSpeed3Record: 'saveSpeed3Record',
         loadSpeed3Records: 'loadSpeed3Records'
       }),
@@ -96,11 +101,15 @@
 
         this.stopTime()
         this.handleResetTimer()
+      },
+      handleClickTab(index, title) {
+        this.updateTitle(title)
       }
     },
     components: { Layout, RubikCubeClock, RubikCubeRecords },
     mounted() {
       this.loadSpeed3Records()
+      this.updateTitle('秒表')
     }
   }
 </script>

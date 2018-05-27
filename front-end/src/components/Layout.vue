@@ -1,6 +1,7 @@
 <template>
   <div>
     <van-nav-bar
+      :title="title"
       left-text="返回"
       right-text="导航"
       left-arrow
@@ -14,11 +15,17 @@
 </template>
 
 <script>
+  import { mapGetters } from 'vuex'
   import Home from 'components/Home'
 
   export default {
     name: 'Layout',
     components: { Home },
+    computed: {
+      ...mapGetters({
+        title: 'title'
+      })
+    },
     methods: {
       handleLinkTo(path) {
         this.$router.push({ path: `/${path}` })
